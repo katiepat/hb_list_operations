@@ -106,8 +106,11 @@ def custom_extend(input_list, second_list):
         True
 
     """
+    # custom_append(input_list) = second_list[0]
+    # custom_append(input_list) = second_list[1]
+    for item in second_list:
+        custom_append(input_list, item)
 
-    pass
 
 
 def custom_insert(input_list, index, value):
@@ -124,8 +127,8 @@ def custom_insert(input_list, index, value):
         True
 
     """
+    input_list[index:index] = [value]
 
-    pass
 
 
 def custom_remove(input_list, value):
@@ -143,8 +146,10 @@ def custom_remove(input_list, value):
         True
 
     """
-
-    pass
+    for i in range(len(input_list)-1):
+        if value in input_list:
+            del input_list[i]
+            break
 
 
 def custom_pop(input_list):
@@ -162,8 +167,11 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
+    pop = input_list[-1]
 
-    return None
+    del input_list[-1]
+
+    return pop
 
 
 def custom_index(input_list, value):
@@ -179,8 +187,10 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
 
+    for i in range(custom_len(input_list)-1):
+        if input_list[i] == value:
+            return i
 
 def custom_count(input_list, value):
     """Return the number of times value appears in the list.
@@ -194,8 +204,14 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    count = 0
+    # for i in range(custom_len(input_list)-1):
+    #     if input_list[i] == value:
+    #         count += 1
+    for item in input_list:
+        if value == item:
+            count+=1
+    return count 
 
 
 def custom_reverse(input_list):
@@ -213,9 +229,8 @@ def custom_reverse(input_list):
         True
 
     """
-
-    pass
-
+    #input_list2 = input_list[::-1]
+    input_list[::-1] = input_list
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
